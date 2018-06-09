@@ -1,0 +1,36 @@
+#
+[slack]
+[slack.int80-incog]
+Token="SECRET SLACK TOKEN"
+
+[irc]
+[irc.freenode]
+Server="chat.freenode.net:6697"
+Password="SECRET FREENODE PASSWORD"
+Nick="IncogRepl2"
+UseTLS=true
+PrefixMesssagesWithNick=true
+RemoteNickFormat="<{NICK}> "
+
+[api]
+[api.local]
+BindAddress="0.0.0.0:4242"
+Buffer=1000
+
+[[gateway]]
+name="peets"
+enable=true
+    [[gateway.inout]]
+    account="irc.freenode"
+    channel="#floorboards"
+    [[gateway.inout]]
+    account="api.local"
+
+[[gateway]]
+name="starbucks"
+enable=true
+    [[gateway.inout]]
+    account="slack.int80-incog"
+    channel="firmchats"
+    [[gateway.inout]]
+    account="api.local"
