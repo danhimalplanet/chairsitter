@@ -1,0 +1,16 @@
+# docker-compose.yml
+
+version: "3.5"
+
+services:
+
+  matterbridge:
+    container_name: incog-bridge
+    restart: unless-stopped
+    image: 42wim/matterbridge:latest
+    labels:
+      - traefik.enable=false
+    ports:
+      - 127.0.0.1:4242:4242
+    volumes:
+      - ./matterbridge.toml:/matterbridge.toml
